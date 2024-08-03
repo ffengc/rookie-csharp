@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\demac\\Desktop\\rookie-csharp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|c:\\users\\demac\\desktop\\rookie-csharp\\src\\lesson2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|solutionrelative:src\\lesson2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|c:\\users\\demac\\desktop\\rookie-csharp\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|c:\\users\\demac\\desktop\\rookie-csharp\\src\\test_class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|solutionrelative:src\\test_class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|c:\\users\\demac\\desktop\\rookie-csharp\\src\\lesson1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|solutionrelative:src\\lesson1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,26 +27,41 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "test_class.cs",
-              "DocumentMoniker": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\test_class.cs",
-              "RelativeDocumentMoniker": "src\\test_class.cs",
-              "ToolTip": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\test_class.cs",
-              "RelativeToolTip": "src\\test_class.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAYAAAA",
+              "Title": "Main.cs",
+              "DocumentMoniker": "C:\\Users\\demac\\Desktop\\rookie-csharp\\Main.cs",
+              "RelativeDocumentMoniker": "Main.cs",
+              "ToolTip": "C:\\Users\\demac\\Desktop\\rookie-csharp\\Main.cs",
+              "RelativeToolTip": "Main.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T15:32:13.835Z"
+              "WhenOpened": "2024-08-02T15:31:06.637Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "main.cs",
-              "DocumentMoniker": "C:\\Users\\demac\\Desktop\\rookie-csharp\\main.cs",
-              "RelativeDocumentMoniker": "main.cs",
-              "ToolTip": "C:\\Users\\demac\\Desktop\\rookie-csharp\\main.cs",
-              "RelativeToolTip": "main.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAgAAAA",
+              "Title": "Lesson2.cs",
+              "DocumentMoniker": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\Lesson2.cs",
+              "RelativeDocumentMoniker": "src\\Lesson2.cs",
+              "ToolTip": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\Lesson2.cs",
+              "RelativeToolTip": "src\\Lesson2.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T15:31:06.637Z",
+              "WhenOpened": "2024-08-03T07:23:28.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Lesson1.cs",
+              "DocumentMoniker": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\Lesson1.cs",
+              "RelativeDocumentMoniker": "src\\Lesson1.cs",
+              "ToolTip": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\Lesson1.cs",
+              "RelativeToolTip": "src\\Lesson1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T05:58:50.429Z",
               "EditorCaption": ""
             }
           ]
