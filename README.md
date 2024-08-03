@@ -667,3 +667,281 @@ public void Test7()
 }
 ```
 
+### 可空类型 `Nullable`
+
+简单说明：`?` 单问号用于对 `int、double、bool` 等无法直接赋值为 `null` 的数据类型进行 `null` 的赋值，意思是这个数据类型是 `Nullable` 类型的。
+
+```cs
+int i; // default: 0
+int? i; // default: null
+```
+
+`??` 双问号用于判断一个变量在为 `null` 的时候返回一个指定的值。
+
+> [!TIP]
+>
+> `int? i = 3;` 等同于 `Nullable<int> i = new Nullable<int>(3);`
+
+**`?`的用法：**
+
+```cs
+public void Test8()
+{
+    int? a = null;
+    int? b = 10;
+    int? c = new int();
+    int? d = new int?();
+    Console.WriteLine("{0}, {1}, {2}, {3}", a, b, c, d); // result: , 10, 0,
+}
+```
+
+**`??`的用法：**
+
+简单来说就是，如果为`null`则返回预设值，否则返回原有的非`null`值。
+
+```cs
+public void Test9()
+{
+    int? a = null;
+    int res1 = a ?? -1;
+    a = 10;
+    int res2 = a ?? -1;
+    Console.WriteLine("{0}, {1}", res1, res2); // -1, 10
+}
+```
+
+## 数组
+
+### 常规数组
+
+数组下标从0开始，其他规则基本和C++相同，直接看例子。
+
+```cs
+public void Test1()
+{
+    int[] arr1 = { 1, 2, 3, 4 };
+    int[] arr2 = new int[3];
+    int[] arr3 = new int[3] { 1, 3, 5 };
+    arr1[0] = 10;
+    foreach (int i in arr1) Console.Write(i + " ");
+    Console.WriteLine();
+    foreach (int i in arr2) Console.Write(i + " ");
+    Console.WriteLine();
+    foreach (int i in arr3) Console.Write(i + " ");
+    Console.WriteLine();
+}
+```
+
+![](./assets/9.png)
+
+**多维数组：**
+
+```cs
+public void Test2()
+{
+    string[,] arr = { { "aaa", "bbb" }, { "ccc", "ddd" } };
+    foreach (var subarr in arr) foreach (var i in subarr) Console.Write(i + " ");
+    Console.WriteLine();
+    /** 可以发现第一层 foreach之后已经可以拿到所有的数据了，不用第二层循环 */
+    foreach (var i in arr)  Console.Write(i + " ");
+    Console.WriteLine();
+    /** 分层打印 */
+    for (int i = 0; i < arr.GetLength(0); ++i) 
+    {
+        for(int j = 0; j < arr.GetLength(1); ++j)
+        {
+            Console.Write(arr[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+```
+
+**交错数组：**
+
+本质：数组的数组
+
+可以声明：
+
+```cs
+int [][] scores;
+```
+
+声明不会创建空间，需要手动`new`。
+
+```cs
+int[][] scores = new int[5][];
+for (int i = 0; i < scores.Length; i++) 
+{
+   scores[i] = new int[4];
+}
+```
+
+另一种初始化的方式：
+
+```cs
+int[][] scores = new int[2][]{new int[]{92,93,94},new int[]{85,66,87,88}};
+```
+
+参考：**[https://www.runoob.com/csharp/csharp-jagged-arrays.html](https://www.runoob.com/csharp/csharp-jagged-arrays.html)**
+
+```cs
+public void Test3()
+{
+    int[][] arr = { new int[] { 1, 2, 3 }, new int[] { 2, 3} };
+    foreach (var subarr in arr)
+    {
+        foreach (int i in subarr) Console.Write(i + " ");
+        Console.WriteLine();
+    }
+}
+```
+
+交错数组需要两层`foreach`来访问。
+
+### 数组作为函数参数
+
+和C++/C相同，数组名为首元素地址（说法不准确，但可以这样理解）
+
+直接看例子就行了
+
+```cs
+public void PrintArray(int[] arr)
+{
+    foreach (var i in arr) Console.Write(i + " ");
+    Console.WriteLine();
+    for (int i = 0; i < arr.Length; i++) Console.Write(arr[i] + " ");
+    Console.WriteLine();
+}
+public void Test4()
+{
+    int[] arr = { 1, 2, 3, 4 };
+    PrintArray(arr);
+}
+```
+
+![](./assets/11.png)
+
+所以是不需要传递数组的大小的。
+
+### 参数数组（可变参数）
+
+在使用数组作为形参时，C# 提供了 `params` 关键字，使调用数组为形参的方法时，既可以传递数组实参，也可以传递一组数组元素。
+
+例子：
+
+```cs
+public void ShowAllParam(params int[] arr)
+{
+    foreach (var i in arr) Console.Write(i + " ");
+    Console.WriteLine();
+}
+public void Test5()
+{
+    ShowAllParam(1, 2, 3, 4, 5); // result: 1, 2, 3, 4, 5
+}
+```
+
+```cs
+public void ShowAllParam(params int[] arr, params string[] strarr){} // err
+```
+
+> [!NOTE]
+>
+> `params`参数必须是最后一个参数。
+
+```cs
+public void ShowAllParam(string str, params int[] arr)
+{
+    Console.WriteLine(str);
+    foreach (var i in arr) Console.Write(i + " ");
+    Console.WriteLine();
+}
+public void Test5()
+{
+    ShowAllParam("hello world", 1, 2, 3, 4, 5);
+}
+```
+
+这种操作是合法的。
+
+### `Array`基类
+
+`Array` 类是 C# 中所有数组的基类，它是在 `System` 命名空间中定义。`Array`类提供了各种用于数组的属性和方法。
+
+**下表列出了 Array 类中一些最常用的属性：**
+
+| 序号 | 属性 & 描述                                                  |
+| :--- | :----------------------------------------------------------- |
+| 1    | `IsFixedSize` 获取一个值，该值指示数组是否带有固定大小。     |
+| 2    | `IsReadOnly` 获取一个值，该值指示数组是否只读。              |
+| 3    | `Length` 获取一个 32 位整数，该值表示所有维度的数组中的元素总数。 |
+| 4    | `LongLength` 获取一个 64 位整数，该值表示所有维度的数组中的元素总数。 |
+| 5    | `Rank` 获取数组的秩（维度）。                                |
+
+如需了解 Array 类的完整的属性列表，请参阅微软的 C# 文档。
+
+**下表列出了 Array 类中一些最常用的方法：**
+
+| 序号 | 方法 & 描述                                                  |
+| :--- | :----------------------------------------------------------- |
+| 1    | `Clear` 根据元素的类型，设置数组中某个范围的元素为零、为 false 或者为 null。 |
+| 2    | `Copy(Array, Array, Int32)` 从数组的第一个元素开始复制某个范围的元素到另一个数组的第一个元素位置。长度由一个 32 位整数指定。 |
+| 3    | `CopyTo(Array, Int32)` 从当前的一维数组中复制所有的元素到一个指定的一维数组的指定索引位置。索引由一个 32 位整数指定。 |
+| 4    | `GetLength`  获取一个 32 位整数，该值表示指定维度的数组中的元素总数。 |
+| 5    | `GetLongLength` 获取一个 64 位整数，该值表示指定维度的数组中的元素总数。 |
+| 6    | `GetLowerBound` 获取数组中指定维度的下界。                   |
+| 7    | `GetType` 获取当前实例的类型。从对象（Object）继承。         |
+| 8    | `GetUpperBound` 获取数组中指定维度的上界。                   |
+| 9    | `GetValue(Int32)` 获取一维数组中指定位置的值。索引由一个 32 位整数指定。 |
+| 10   | `IndexOf(Array, Object)` 搜索指定的对象，返回整个一维数组中第一次出现的索引。 |
+| 11   | `Reverse(Array)` 逆转整个一维数组中元素的顺序。              |
+| 12   | `SetValue(Object, Int32)` 给一维数组中指定位置的元素设置值。索引由一个 32 位整数指定。 |
+| 13   | `Sort(Array)` 使用数组的每个元素的 IComparable 实现来排序整个一维数组中的元素。 |
+| 14   | `ToString` 返回一个表示当前对象的字符串。从对象（Object）继承。 |
+
+如需了解 Array 类的完整的方法列表，请参阅微软的 C# 文档。
+
+**文字来自：[https://www.runoob.com/csharp/csharp-array-class.html](https://www.runoob.com/csharp/csharp-array-class.html)**
+
+![](./assets/12.png)
+
+这里用了一个 lambda 表达式。
+
+在 C# 中，如果想对数组进行排序并使用自定义的比较方法，可以使用 `Array.Sort<T>` 方法的几种重载之一，这些重载方法允许你指定比较器。可以通过实现 `IComparer<T>` 接口或使用 `Comparison<T>` 委托来定义自定义比较逻辑。
+
+写一个 `MyCompare` 函数。
+
+![](./assets/13.png)
+
+上面这个是实现一个Compare函数，其实本质和lambda表达式的是一样的。当然这里我用`if, else`, 其实C#给我们内置好了，用`CompareTo`方法就行，和上面是等价的。
+
+> [!NOTE]
+>
+> 注意：实现的 `MyCompare` 函数是需要 `int` 返回值的。
+>
+> 这里要注意，思想和C++是一样的。
+>
+> `Array.Sort()`都是设置从“小”到“大”排列，这个大/小如何定义是可以设置的
+>
+> 如果`MyCompare(x, y)`返回的是负整数，表示 `x < y`;
+>
+> 如果`MyCompare(x, y)`返回的是0，表示 `x = y`;
+>
+> 如果`MyCompare(x, y)`返回的是正整数，表示 `x > y`;
+
+需要创建一个实现 `IComparer<int>` 接口的类，然后在该类中实现 `Compare`类。
+
+![](./assets/14.png)
+
+> [!CAUTION]
+>
+> 类里的函数名必须为`Compare(T x, T y)`。
+>
+> 这是因为 `IComparer<T>` 接口规定了一个具体的方法签名，必须遵循这个签名来实现比较逻辑。
+
+**另外需要注意：这里要和C++区分开来，C++也可以用类或者函数来当仿函数**
+
+- 用类在C++里是需要带括号的，然后类内重载对比操作符 `operator<` 或 `operator==`等。
+- 用函数在C++里不用带括号，函数参数和C#一样，有要求，函数返回值是 `bool` 类型。
