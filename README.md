@@ -6,11 +6,13 @@
 
 **参考: [https://www.runoob.com/csharp/csharp-tutorial.html](https://www.runoob.com/csharp/csharp-tutorial.html)**
 
-C#的构想很接近C++，但是它和JAVA更相似，因为我是写C++比较多，所以这个记录会记录我对C#的，从C++角度的一些理解。
-
-如果想通过本文档学习了解C#，需要先熟练编写C++代码，理解面向对象编程思想。
-
-本文档提供简单入门，深入了解需要通过项目来学习，通过本文档是不够的。
+> [!TIP]
+>
+> - C#的构想很接近C++，但是它和JAVA更相似，因为我是写C++比较多，所以这个记录会记录我对C#的，从C++角度的一些理解。
+>
+> - 如果想通过本文档学习了解C#，需要先熟练编写C++代码，理解面向对象编程思想。
+>
+> - 本文档提供简单入门，深入了解需要通过项目来学习，通过本文档是不够的。
 
 ## 环境
 
@@ -339,4 +341,329 @@ internal void Test5()
 下面代码在`Lesson2.cs`中。
 
 ## 类型转换
+
+### 隐式和显式
+
+C#中有两种类型转换：隐式和显式，和CPP一样的，很好理解。
+
+```cs
+byte b = 10;
+int i = b; // 隐式转换
+```
+
+显示就是强转，强转可能会导致丢失数据，这个也很好理解，不赘述。
+
+```cs
+int intValue = 42;
+float floatValue = (float)intValue; // 强制从 int 到 float，数据可能损失精度
+```
+
+### 类型转换方法
+
+| 序号 | 内置方法                                                     |
+| ---- | ------------------------------------------------------------ |
+| 1    | `ToBoolean` 如果可能的话，把类型转换为布尔型。               |
+| 2    | `ToByte` 把类型转换为字节类型。                              |
+| 3    | `ToChar` 如果可能的话，把类型转换为单个 Unicode 字符类型。   |
+| 4    | `ToDateTime` 把类型（整数或字符串类型）转换为 日期-时间 结构。 |
+| 5    | `ToDecimal` 把浮点型或整数类型转换为十进制类型。             |
+| 6    | `ToDouble` 把类型转换为双精度浮点型。                        |
+| 7    | `ToInt16` 把类型转换为 16 位整数类型。                       |
+| 8    | `ToInt32` 把类型转换为 32 位整数类型。                       |
+| 9    | `ToInt64` 把类型转换为 64 位整数类型。                       |
+| 10   | `ToSbyte` 把类型转换为有符号字节类型。                       |
+| 11   | `ToSingle` 把类型转换为小浮点数类型。                        |
+| 12   | `ToString`把类型转换为字符串类型。                           |
+| 13   | `ToType` 把类型转换为指定类型。                              |
+| 14   | `ToUInt16` 把类型转换为 16 位无符号整数类型。                |
+| 15   | `ToUInt32` 把类型转换为 32 位无符号整数类型。                |
+| 16   | `ToUInt64` 把类型转换为 64 位无符号整数类型。                |
+
+这些方法都定义在 `System.Convert` 类中，使用时需要包含 System 命名空间。它们提供了一种安全的方式来执行类型转换，因为它们可以处理 null值，**并且会抛出异常**，如果转换不可能进行。
+
+**参考：[https://www.runoob.com/csharp/csharp-type-conversion.html](https://www.runoob.com/csharp/csharp-type-conversion.html)**
+
+上面这些都是 `Convert` 类里面的非静态方法。
+
+当然，`System.Convert` 也提供了一些静态的方法可以用。
+
+```cs
+public void Test1()
+{
+    // 使用 Convert 的静态方法
+    string str = "123";
+    int num = Convert.ToInt32(str);
+    Console.WriteLine(num);
+    // 使用 Parse 方法
+    string str2 = "123.12";
+    double d = double.Parse(str2);
+    Console.WriteLine(d);
+    // 使用 TryParse 方法
+    string str3 = "123.12";
+    double d2;
+    bool if_success = double.TryParse(str3, out d2);
+    if(if_success)
+    {
+        Console.WriteLine("success: {0}", d2);
+    } else
+    {
+        Console.WriteLine("failed: {0}", d2);
+    }
+}
+```
+
+![](./assets/7.png)
+
+- `Parse` 方法用于将字符串转换为对应的数值类型，如果转换失败会抛出异常。
+- `TryParse` 方法类似于 `Parse`，但它不会抛出异常，而是返回一个布尔值指示转换是否成功。
+
+### 类型转换重载
+
+C# 还允许你定义自定义类型转换操作，通过在类型中定义 `implicit` 或 `explicit` 关键字。
+
+```cs
+internal class MyNumber
+{
+    public int Value;
+    public MyNumber(int value)
+    {
+        Value = value;
+    }
+    public static implicit operator int(MyNumber mn)
+    {
+        return mn.Value;
+    }
+    public static explicit operator MyNumber(int n)
+    {
+        return new MyNumber(n);
+    }
+}
+// ...
+public void Test2()
+{
+    MyNumber mn = new MyNumber(1);
+    int n = mn;
+    MyNumber nm2 = (MyNumber)(n + 1);
+    Console.WriteLine(nm2); // result: 2
+}
+```
+
+相当于重载，很好理解。
+
+- 为什么用 `static`，因为和 `this` 无关。
+
+**详细的类型转换表格总结：[https://www.runoob.com/csharp/csharp-type-conversion.html](https://www.runoob.com/csharp/csharp-type-conversion.html)**
+
+## 从 `stdin` 读数据
+
+`System` 命名空间中的 `Console` 类提供了一个函数 `ReadLine()`，用于接收来自用户的输入，并把它存储到一个变量中。
+
+```cs
+public void Test3()
+{
+    int n = 0;
+    n = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine(n);
+}
+```
+
+## 一些其他规则
+
+### 变量的生命周期
+
+简单变量的生命周期和CPP一样，不赘述。
+
+### 常量
+
+整数常量可以是十进制、八进制或十六进制的常量。前缀指定基数：0x 或 0X 表示十六进制，0 表示八进制，没有前缀则表示十进制。
+
+整数常量也可以有后缀，可以是 U 和 L 的组合，其中，U 和 L 分别表示 unsigned 和 long。后缀可以是大写或者小写，多个后缀以任意顺序进行组合。
+
+这里有一些整数常量的实例：
+
+```cs
+212         /* 合法 */
+215u        /* 合法 */
+0xFeeL      /* 合法 */
+078         /* 非法：8 不是一个八进制数字 */
+032UU       /* 非法：不能重复后缀 */
+```
+
+以下是各种类型的整数常量的实例：
+
+```cs
+85         /* 十进制 */
+0213       /* 八进制 */
+0x4b       /* 十六进制 */
+30         /* int */
+30u        /* 无符号 int */
+30l        /* long */
+30ul       /* 无符号 long */
+```
+
+**参考：[https://www.runoob.com/csharp/csharp-constants.html](https://www.runoob.com/csharp/csharp-constants.html)**
+
+一个浮点常量是由整数部分、小数点、小数部分和指数部分组成。您可以使用小数形式或者指数形式来表示浮点常量。这里有一些浮点常量的实例：
+
+```cs
+3.14159       /* 合法 */
+314159E-5L    /* 合法 */
+510E          /* 非法：不完全指数 */
+210f          /* 非法：没有小数或指数 */
+.e55          /* 非法：缺少整数或小数 */
+```
+
+字符常量里面转义字符那些，和其他语言基本相同。
+
+字符串常量：字符串常量是括在双引号 `""` 里，或者是括在 `@""` 里。字符串常量包含的字符与字符常量相似。
+
+定义常量：
+
+```cs
+internal class TestConst {
+    public const int v1 = 1;
+    public int v2 = 2;
+}
+public void Test4()
+{
+    TestConst tc = new TestConst();
+    Console.WriteLine("const int v1: {0}", TestConst.v1);
+    Console.WriteLine("int v2 = {0}", tc.v2);
+}
+```
+
+> [!NOTE]
+>
+> **注意：类内常字段用类名访问，而不是用实例化后对象进行访问。**
+
+### 运算符
+
+运算符是一种告诉编译器执行特定的数学或逻辑操作的符号。C# 有丰富的内置运算符，分类如下：
+
+- 算术运算符
+- 关系运算符
+- 逻辑运算符
+- 位运算符
+- 赋值运算符
+- 其他运算符
+
+**参考：[https://www.runoob.com/csharp/csharp-operators.html](https://www.runoob.com/csharp/csharp-operators.html)**
+
+前面五种运算符和CPP相同，不赘述。
+
+| 运算符     | 描述                                   | 实例                                                         |
+| :--------- | :------------------------------------- | :----------------------------------------------------------- |
+| `sizeof()` | 返回数据类型的大小                     | `sizeof(int)`，将返回 4.                                     |
+| `typeof()` | 返回 class 的类型                      | `typeof(StreamReader);`                                      |
+| `&`        | 返回变量的地址                         | `&a;` 将得到变量的实际地址。                                 |
+| `*`        | 变量的指针                             | `*a;` 将指向一个变量。                                       |
+| `? :`      | 条件表达式                             | 如果条件为真 ? 则为 X : 否则为 Y，和CPP的一样，三目          |
+| `is`       | 判断对象是否为某一类型。               | `If( Ford is Car)`  检查 Ford 是否是 Car 类的一个对象。      |
+| `as`       | 强制转换，即使转换失败也不会抛出异常。 | `Object obj = new StringReader("Hello"); StringReader r = obj as StringReader;` |
+
+### 循环
+
+`while`, `for`, `do while` 和CPP一样。
+
+`foreach`循环：类似CPP的`for(auto e : v)`语句。
+
+```cs
+public void Test5()
+{
+    int[] arr = new int[] { 1, 2, 3, 4, 5 };
+    Console.WriteLine(arr);
+    foreach(var e in arr) Console.WriteLine(e);
+}
+```
+
+![](./assets/8.png)
+
+### 访问限定符和继承
+
+- `public`：所有对象都可以访问；
+- `private`：对象本身在对象内部可以访问；
+- `protected`：只有该类对象及其子类对象可以访问
+- `internal`：同一个程序集的对象可以访问；
+- `protected internal`：访问限于当前程序集或派生自包含类的类型。
+
+不写默认是`private`
+
+`protected`相关的用于继承，和CPP一样，不赘述。
+
+### 方法定义（函数定义）
+
+前面已经编写很多函数定义了，不赘述，这里介绍前面没有提到的一些规则。
+
+#### 一个递归调用的例子
+
+用递归求一个阶乘吧
+
+```cs
+public int Factorial(int input)
+{
+    if (input == 0) return 0;
+    if (input == 1) return 1;
+    return input * Factorial(input - 1);
+}
+public void Test6()
+{
+    int input = 6;
+    Console.WriteLine(Factorial(input)); // result: 720
+}
+```
+
+#### 输入参数、输入输出参数、输出参数
+
+这个很好理解，一个优秀的C++工程师在设计三种参数的时候都有讲究，比如：
+
+```cpp
+void func(const std::string& input, std::string& input_output, std::string* output);
+```
+
+**第一个是输入参数，必须带上`const`，这是优秀的编码习惯，第二个是输入输出参数，第三种是输出参数，一般用指针来写，这种规范是一定要在编码中体现出来的。**
+
+**对应C#：**
+
+```cs
+public void Func(int a, ref int b, out int c) {}
+```
+
+`ref`表示传引用，`out`表示纯输出参数。
+
+> [!NOTE]
+>
+> 在 C++ 和 C# 中，参数传递的机制和关键字使用存在一些显著的差异，特别是关于引用和 `const` 的使用。这些差异主要源于两种语言在设计哲学和运行时行为上的不同。
+>
+> **C++ 中的 `const` 和引用**
+>
+> 在 C++ 中，`const` 关键字和引用 (`&`) 被广泛用于参数传递，主要原因是：
+> - **性能优化**：通过传递引用来避免复制大型对象，例如 `std::string`，同时使用 `const` 保证函数不会修改传入的对象。
+> - **确保不可变性**：`const` 关键字确保函数内部不能修改输入参数，增加代码的安全性和可预测性。
+>
+> **C# 中的参数传递**
+>
+> C# 设计时采用了不同的方法：
+> - **引用语义**：C# 中的类类型（引用类型）默认就是通过引用传递的，但这是引用的副本，而非对象本身的直接引用。这意味着你可以修改对象的内部状态，但不能修改对象本身的引用。
+> - **值类型的传递方式**：值类型（如 `int`, `struct` 等）默认是通过值传递的，即创建原始数据的副本。如果你需要通过函数修改原始值类型数据，可以使用 `ref` 或 `out`。
+> - **不支持 `const`**：C# 没有直接等价于 C++ 中的 `const` 修饰符。C# 不能声明一个方法的参数为 `const`，意味着不像在 C++ 中那样在编译时强制禁止修改参数。如果需要保证不修改数据，只能依靠开发者的约定或通过使用不可变对象来实现。
+>
+> **设计哲学差异**
+>
+> - **简化语言复杂度**：C# 设计时尽可能简化语言特性，避免了 C++ 中的一些复杂性，如指针算术和复杂的引用传递规则。
+> - **安全性**：C# 强调内存和执行安全，自动内存管理（垃圾收集）减少了直接内存操作的需要，也就减少了 `const` 和指针的必要性。
+>
+> 总结来说，虽然 C# 在设计上不支持像 C++ 那样的 `const` 修饰符或相同的引用传递语义，但它提供了其它机制（如 `readonly` 修饰符、不可变集合等）来实现类似的目标。C# 的设计选择更强调简洁性和安全性，虽然这导致了一些灵活性的牺牲。
+
+```cs
+public void Func(int a, ref int b, out int c) {
+    int aa = a;
+    int bb = b;
+    c = b;
+}
+public void Test7()
+{
+    int a = 10, b = 10, c;
+    Func(a, ref b, out c);
+}
+```
 
