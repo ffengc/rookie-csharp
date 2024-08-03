@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\demac\\Desktop\\rookie-csharp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|c:\\users\\demac\\desktop\\rookie-csharp\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|c:\\users\\demac\\desktop\\rookie-csharp\\src\\test_class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|solutionrelative:src\\test_class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "test_class.cs",
+              "DocumentMoniker": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\test_class.cs",
+              "RelativeDocumentMoniker": "src\\test_class.cs",
+              "ToolTip": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\test_class.cs",
+              "RelativeToolTip": "src\\test_class.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T15:32:13.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cs",
+              "DocumentMoniker": "C:\\Users\\demac\\Desktop\\rookie-csharp\\main.cs",
+              "RelativeDocumentMoniker": "main.cs",
+              "ToolTip": "C:\\Users\\demac\\Desktop\\rookie-csharp\\main.cs",
+              "RelativeToolTip": "main.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T15:31:06.637Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
