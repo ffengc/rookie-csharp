@@ -667,3 +667,46 @@ public void Test7()
 }
 ```
 
+### 可空类型 `Nullable`
+
+简单说明：`?` 单问号用于对 `int、double、bool` 等无法直接赋值为 `null` 的数据类型进行 `null` 的赋值，意思是这个数据类型是 `Nullable` 类型的。
+
+```cs
+int i; // default: 0
+int? i; // default: null
+```
+
+`??` 双问号用于判断一个变量在为 `null` 的时候返回一个指定的值。
+
+> [!TIP]
+>
+> `int? i = 3;` 等同于 `Nullable<int> i = new Nullable<int>(3);`
+
+**`?`的用法：**
+
+```cs
+public void Test8()
+{
+    int? a = null;
+    int? b = 10;
+    int? c = new int();
+    int? d = new int?();
+    Console.WriteLine("{0}, {1}, {2}, {3}", a, b, c, d); // result: , 10, 0,
+}
+```
+
+**`??`的用法：**
+
+简单来说就是，如果为`null`则返回预设值，否则返回原有的非`null`值。
+
+```cs
+public void Test9()
+{
+    int? a = null;
+    int res1 = a ?? -1;
+    a = 10;
+    int res2 = a ?? -1;
+    Console.WriteLine("{0}, {1}", res1, res2); // -1, 10
+}
+```
+

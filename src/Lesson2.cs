@@ -95,4 +95,20 @@ internal class Lesson2
         int a = 10, b = 10, c;
         Func(a, ref b, out c);
     }
+    public void Test8()
+    {
+        int? a = null;
+        int? b = 10;
+        int? c = new int();
+        int? d = new int?();
+        Console.WriteLine("{0}, {1}, {2}, {3}", a, b, c, d);
+    }
+    public void Test9()
+    {
+        int? a = null;
+        int res1 = a ?? -1;
+        a = 10;
+        int res2 = a ?? -1;
+        Console.WriteLine("{0}, {1}", res1, res2);
+    }
 }

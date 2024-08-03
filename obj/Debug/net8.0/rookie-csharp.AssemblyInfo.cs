@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("rookie-csharp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f1d470251a6677881e0eaafe3d1c465bf61d841")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+615ff8132bb26e5a438b314b7a434f8d0626062d")]
 [assembly: System.Reflection.AssemblyProductAttribute("rookie-csharp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("rookie-csharp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
