@@ -1,18 +1,27 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using rookie_csharp.src;
-using System;
-namespace HelloWorldApplication
+#if false
+Console.WriteLine("top level statement");
+int a = 10;
+var b = 20;
+Console.WriteLine("a: {0}, b:{1}, a+b:{2}", a, b, a + b);
+SayHello.Say(); // static方法用类名调用
+class SayHello
 {
-    class HelloWorld
+    public static void Say() { Console.WriteLine("hello"); }
+}
+#endif
+
+// program entry
+
+namespace rookie_csharp
+{
+    class Run
     {
         static void Main(string[] args)
         {
-            /* 我的第一个 C# 程序*/
-            Console.WriteLine("Hello World");
-            test_class tc1 = new test_class();
-            Console.WriteLine(tc1.v);
-            tc1.test_f();
+            Lesson2 t = new Lesson2();
+            t.Test1();
         }
     }
 }

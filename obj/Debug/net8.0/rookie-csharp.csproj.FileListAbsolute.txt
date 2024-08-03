@@ -21,6 +21,7 @@ C:\Users\demac\Desktop\rookie-csharp\obj\Debug\net8.0\rookie-csharp.GeneratedMSB
 C:\Users\demac\Desktop\rookie-csharp\obj\Debug\net8.0\rookie-csharp.AssemblyInfoInputs.cache
 C:\Users\demac\Desktop\rookie-csharp\obj\Debug\net8.0\rookie-csharp.AssemblyInfo.cs
 C:\Users\demac\Desktop\rookie-csharp\obj\Debug\net8.0\rookie-csharp.csproj.CoreCompileInputs.cache
+C:\Users\demac\Desktop\rookie-csharp\obj\Debug\net8.0\rookie-csharp.sourcelink.json
 C:\Users\demac\Desktop\rookie-csharp\obj\Debug\net8.0\rookie-csharp.dll
 C:\Users\demac\Desktop\rookie-csharp\obj\Debug\net8.0\refint\rookie-csharp.dll
 C:\Users\demac\Desktop\rookie-csharp\obj\Debug\net8.0\rookie-csharp.pdb
