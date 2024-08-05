@@ -945,3 +945,374 @@ public void Test5()
 
 - 用类在C++里是需要带括号的，然后类内重载对比操作符 `operator<` 或 `operator==`等。
 - 用函数在C++里不用带括号，函数参数和C#一样，有要求，函数返回值是 `bool` 类型。
+
+## `String`类型
+
+### 构造
+
+在 C# 中，您可以使用字符数组来表示字符串，但是，更常见的做法是使用 `string` 关键字来声明一个字符串变量。`string` 关键字是 `System.String` 类的别名。
+
+可以使用以下方法之一来创建 `string` 对象：
+
+- 通过给 `string` 变量指定一个字符串
+- 通过使用 `string` 类构造函数
+- 通过使用字符串串联运算符（ + ）
+- 通过检索属性或调用一个返回字符串的方法
+- 通过格式化方法来转换一个值或对象为它的字符串表示形式
+
+```cs
+public void Test8()
+{
+    // 直接指定字符串
+    string str1 = "abcd";
+    Console.WriteLine(str1);
+    // 使用 + 运算符
+    string str2 = "abcd" + "efg";
+    Console.WriteLine(str2);
+    // 方法返回字符串
+    string[] str_array = { "Hello ", "world" };
+    string mesg = String.Join("", str_array);
+    Console.WriteLine(mesg);
+    // 用于转化值的格式化方法
+    DateTime waiting = new DateTime(2012, 10, 10, 17, 58, 1);
+    string str3 = String.Format("the time: {0:t} on {0:D}", waiting);
+    Console.WriteLine(str3);
+}
+```
+
+输出：
+
+```sh
+abcd
+abcdefg
+Hello world
+the time: 17:58 on 2012年10月10日
+```
+
+### 属性
+
+| 序号 | 属性名称 & 描述                                            |
+| :--- | :--------------------------------------------------------- |
+| 1    | `Chars` 在当前 `String` 对象中获取 `Char` 对象的指定位置。 |
+| 2    | `Length` 在当前的 `String` 对象中获取字符数。              |
+
+### 常用方法介绍
+
+**此部分参考: [https://www.runoob.com/csharp/csharp-string.html](https://www.runoob.com/csharp/csharp-string.html)**
+
+```cs
+public static int Compare( string strA, string strB )
+public static int Compare( string strA, string strB, bool ignoreCase)
+```
+
+比较两个指定的 `string` 对象，并返回一个表示它们在排列顺序中相对位置的整数。该方法区分大小写。
+
+如果布尔参数为真时，该方法不区分大小写。
+
+```cs
+public static string Concat( string str0, string str1, string str2, string str3, ...)
+```
+
+连接若干个字符串。
+
+```cs
+public bool Contains(string value)
+```
+
+返回一个表示指定 `string` 对象是否出现在字符串中的值。
+
+```cs
+public static string Copy(string str)
+```
+
+创建一个与指定字符串具有相同值的新的 `String` 对象
+
+```cs
+public void CopyTo(int sourceIndex, char[] destination, int destinationIndex, int count)
+```
+
+从 string 对象的指定位置开始复制指定数量的字符到 Unicode 字符数组中的指定位置。
+
+```cs
+public bool EndsWith( string value )
+public bool StartsWith( string value )
+```
+
+判断 `string` 对象的结尾/开头是否匹配指定的字符串。
+
+```cs
+public bool Equals( string value )
+public static bool Equals( string a, string b )
+```
+
+判断两个字符串是否相同。
+
+```cs
+public static string Format( string format, Object arg0 )
+```
+
+把指定字符串中一个或多个格式项替换为指定对象的字符串表示形式。
+
+```cs
+public int IndexOf( char value )
+public int IndexOf( string value )
+public int IndexOf( string value, int startIndex )
+```
+
+返回指定字符/字符串第一次出现的索引，索引从 0 开始，也可以指定。
+
+```cs
+public int IndexOfAny( char[] anyOf )
+public int IndexOfAny( char[] anyOf, int startIndex )
+```
+
+返回char数组中任意字符/字符串第一次出现的索引，索引从 0 开始，也可以指定。
+
+```cs
+public string Insert( int startIndex, string value )
+```
+
+返回一个新的字符串，其中，指定的字符串被插入在当前 `string` 对象的指定索引位置。
+
+```cs
+public static bool IsNullOrEmpty( string value )
+```
+
+指示指定的字符串是否为 null 或者是否为一个空的字符串。
+
+```cs
+public static string Join( string separator, string[] value )
+public static string Join( string separator, string[] value, int startIndex, int count )
+```
+
+1. 连接一个字符串数组中的所有元素，使用指定的分隔符分隔每个元素。
+2. 连接一个字符串数组中的指定位置开始的指定元素，使用指定的分隔符分隔每个元素。
+
+```cs
+public int LastIndexOf( char value )
+public int LastIndexOf( string value )
+```
+
+返回指定字符串在当前 string 对象中最后一次出现的索引位置，索引从 0 开始。
+
+```cs
+public string Remove( int startIndex )
+public string Remove( int startIndex, int count )
+```
+
+移除当前实例中的所有字符，从指定位置开始，一直到最后一个位置为止或指定数量。
+
+```cs
+public string Replace( char oldChar, char newChar )
+public string Replace( string oldValue, string newValue )
+```
+
+替换字符/字符串。
+
+```cs
+public string[] Split( params char[] separator )
+public string[] Split( char[] separator, int count )
+```
+
+返回一个字符串数组，包含当前的 string 对象中的子字符串，子字符串是使用指定的 Unicode 字符数组中的元素进行分隔的。`int` 参数指定要返回的子字符串的最大数目。
+
+```cs
+public char[] ToCharArray()
+public char[] ToCharArray( int startIndex, int length )
+```
+
+字符串转字符数组。
+
+```cs
+public string ToLower()
+public string ToUpper()
+```
+
+大小写转换。
+
+```cs
+public string Trim()
+```
+
+移除当前 String 对象中的所有前导空白字符和后置空白字符。
+
+**示例代码如下所示：**
+
+```cs
+public void Test9()
+{
+    // Compare
+    string str1 = "abc";
+    string str2 = "bb";
+    Console.WriteLine(String.Compare(str1, str2)); // -1
+    // Concat
+    string str3 = "ccdd";
+    Console.WriteLine(String.Concat(str1, str2, str3, str1, str2)); // abcbbccddabcbb
+    // Contains
+    str1 = "abcdefg";
+    string sub_str1 = "bcd";
+    string sub_str2 = "bb";
+    Console.WriteLine(str1.Contains(sub_str1)); // True
+    Console.WriteLine(str1.Contains(sub_str2)); // False
+    // Copy
+    string str4 = String.Copy(str1);
+    Console.WriteLine(str4); // abcdefg
+    // CopyTo
+    char[] dest = new char[10];
+    str4.CopyTo(1, dest, 0, 3); // copy "bcd" to dest
+    Console.WriteLine(dest); // bcd\0\0\0... -> bcd
+    // EndsWith
+    string end = "efg";
+    Console.WriteLine(str4.EndsWith(end)); // True
+    // Equals / static Equals
+    string str5 = "abc";
+    string str6 = "abc";
+    string str7 = "aBc";
+    Console.WriteLine(str5.Equals(str6)); // True
+    Console.WriteLine(str5.Equals(str7)); // False
+    Console.WriteLine(String.Equals(str5, str6)); // True
+}
+public void Test10()
+{
+    // Format
+    string temp = "abc{0}{1}";
+    string str1 = String.Format(temp, 1, 2);
+    Console.WriteLine(str1); // abc12
+    // IndexOf
+    char ch = 'a';
+    string str2 = "baba";
+    Console.WriteLine(str2.IndexOf(ch)); // 1
+    // IndexOf
+    string sub1 = "ab";
+    string sub2 = "abc";
+    Console.WriteLine(str2.IndexOf(sub1)); // 1
+    Console.WriteLine(str2.IndexOf(sub2)); // -1
+    // IndexOfAny
+    string str3 = "aaabbbcccddd";
+    char[] ch_arr = { 'd', 'e', 'c' };
+    Console.WriteLine(str3.IndexOfAny(ch_arr)); // 6
+    // Insert
+    temp = "eee";
+    Console.WriteLine(str3.Insert(0, temp)); // eeeaaabbbcccddd
+    // IsNullOrEmpty
+    string str4 = new String("");
+    string str5 = null;
+    Console.WriteLine(String.IsNullOrEmpty(str4)); // True
+    Console.WriteLine(String.IsNullOrEmpty(str5)); // True
+    // Join
+    string[] str_arr = { "aaa", "bbb", "ccc" };
+    Console.WriteLine(String.Join("-", str_arr)); // aaa-bbb-ccc
+}
+public void PrintArray<type>(type[] arr)
+{
+    foreach (type i in arr) Console.Write(i + " ");
+    Console.WriteLine();
+}
+public void Test11()
+{
+    // LastIndexOf
+    string str1 = "abcdefea";
+    Console.WriteLine(str1.LastIndexOf('a')); // 7
+    // Remove
+    string str2 = "abc****c";
+    Console.WriteLine(str2.Remove(2)); // ab
+    Console.WriteLine(str2.Remove(2, str2.Length - 1 - 2)); // abc
+    // Replace
+    string str3 = "aabaabcsda";
+    Console.WriteLine(str3.Replace('a', 'A')); // AAbAAbcsdA
+    Console.WriteLine(str3.Replace("ab", "AB")); // aABaABcsda
+    // Split
+    string str4 = "a*b*c^dd*cd^aa";
+    PrintArray(str4.Split('*', '^')); // a b c dd cd aa
+    // ToCharArray
+    string str5 = "abcd";
+    PrintArray(str5.ToCharArray()); // a b c d
+    // Trim
+    string str6 = "    aasdfa   ";
+    Console.WriteLine(str6.Trim()); // aasdfa
+}
+```
+
+## `Struct` 封装
+
+### 简单使用
+
+直接先放一个使用的例子，和C++的简单使用是相同的。
+
+```cs
+internal struct MyDate
+{
+    public int year;
+    public int month;
+    public int day;
+    public MyDate(int y, int m, int d) { year = y; month = m; day = d; }
+    public void ShowDate() { Console.WriteLine($"{year}:{month}:{day}"); }
+}
+public void Test1()
+{
+    MyDate d1 = new MyDate(12, 2, 3);
+    d1.ShowDate();	// 12:2:3
+}
+```
+
+### `struct` vs `class`
+
+**参考：[https://www.runoob.com/csharp/csharp-struct.html](https://www.runoob.com/csharp/csharp-struct.html)**
+
+**`struct`的一些特点：**
+
+- 结构可以定义构造函数，但不能定义析构函数。不能给结构定义无参构造函数，无参构造函数是默认自动定义的。
+- 结构里可以实现一个或者多个接口
+- 结构成员不能被指定为 `abstract`, `virtual`, `protected`
+- 当使用 `New` 操作符创建一个结构对象时，会调用适当的构造函数来创建结构。与类不同，结构可以不使用 New 操作符即可被实例化。但是如果不使用 `New` 操作符，只有在所有的字段都被初始化之后，字段才被赋值，对象才被使用。
+
+**`struct` vs `class` :**
+
+- 结构是值类型，在栈上。结构赋值给另一个变量的时候，是深拷贝。类是引用类型，在堆上。类赋值的时候如果不调用拷贝构造，则是浅拷贝。
+- 结构不支持继承和多态，但类可以。
+- 结构不能有无参数的构造函数： 结构不能包含无参数的构造函数。每个结构都必须有至少一个有参数的构造函数。类可以有无参数的构造函数： 类可以包含无参数的构造函数，如果没有提供构造函数，系统会提供默认的无参数构造函数。
+- 结构体是值类型，不能直接设置为 `null`：因为 `null` 是引用类型的默认值，而不是值类型的默认值。如果需要表示结构体变量的缺失或无效状态，可以使用 `Nullable<T>` 或称为 `T?` 的可空类型。
+
+## 枚举类型
+
+枚举列表中的每个符号代表一个整数值，一个比它前面的符号大的整数值。默认情况下，第一个枚举符号的值是 0
+
+例如：
+
+```cs
+enum Days { Sun, Mon, tue, Wed, thu, Fri, Sat };
+```
+
+## 类
+
+### 基本介绍
+
+前面已经使用到很多类了，这里不赘述上面有的知识点。
+
+> [!TIP]
+>
+> 类的默认访问标识符是 `internal`，成员的默认访问标识符是 `private`。
+
+### 构造和析构
+
+和C++基本相同，不赘述。
+
+### 静态成员
+
+无论实例化多少个类，静态成员只有一个副本。
+
+```cs
+class MyClass
+{
+    public const int a = 10;
+    public static int b = 20;
+}
+public void Test2()
+{
+    Console.WriteLine(MyClass.a); // 10
+    Console.WriteLine(MyClass.b++); // 20
+    Console.WriteLine(MyClass.b); // 21
+}
+```
+
+和 `const` 字段一样用类名访问。
