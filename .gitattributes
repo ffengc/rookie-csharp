@@ -1,1 +1,4 @@
-*.html linguist-detectable=false    ;禁用js语言统计
+*.html linguist-detectable=false
+*.md linguist-language=Other
+*.sln linguist-language=Other
+*.csproj linguist-language=Other
