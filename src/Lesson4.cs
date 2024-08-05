@@ -30,4 +30,40 @@ internal class Lesson4
         Console.WriteLine(MyClass.b++); // 20
         Console.WriteLine(MyClass.b); // 21
     }
+    public class BaseShape { public virtual void Print() { Console.WriteLine("Base Shape"); } }
+    public class Circle : BaseShape { public override void Print() { Console.WriteLine("Circle"); } }
+    public class Rect : BaseShape { public override void Print() { Console.WriteLine("Rect"); } }
+    public void PrintShapeType(BaseShape bs) { bs.Print(); }
+    public void Test3()
+    {
+        BaseShape bs = new BaseShape();
+        Circle c = new Circle();
+        Rect r = new Rect();
+        // 这里就会调用不同的重写函数
+        PrintShapeType(bs);
+        PrintShapeType(c);
+        PrintShapeType(r);
+    }
+    public class Pair
+    {
+        public int x;
+        public int y;
+        public Pair(int a, int b) { x = a; y = b; }
+        public static Pair operator+(Pair p1, Pair p2)
+        {
+            return new Pair(p2.x + p1.x, p2.y + p1.y);
+        }
+        // 重写 ToString 方法 才能支持 Console.WriteLine() 的输出
+        public override string ToString()
+        {
+            return $"Pair(x: {x}, y: {y})";
+        }
+    }
+    public void Test4()
+    {
+        Pair p1 = new Pair(1, 2);
+        Pair p2 = new Pair(2, 3);
+        Console.WriteLine(p1);
+        Console.WriteLine(p1 + p2);
+    }
 }

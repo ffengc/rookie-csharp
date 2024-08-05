@@ -22,6 +22,58 @@
 
 下面代码在文件`Lesson1.cs`中。
 
+## 目录
+
+- [rookie-csharp](#rookie-csharp)
+  - [环境](#环境)
+  - [目录](#目录)
+  - [简单入门](#简单入门)
+  - [顶级语句](#顶级语句)
+  - [类型](#类型)
+    - [值类型](#值类型)
+    - [浅拷贝还是深拷贝](#浅拷贝还是深拷贝)
+    - [引用类型](#引用类型)
+    - [指针类型](#指针类型)
+  - [类型转换](#类型转换)
+    - [隐式和显式](#隐式和显式)
+    - [类型转换方法](#类型转换方法)
+    - [类型转换重载](#类型转换重载)
+  - [从 `stdin` 读数据](#从-stdin-读数据)
+  - [一些其他规则](#一些其他规则)
+    - [变量的生命周期](#变量的生命周期)
+    - [常量](#常量)
+    - [运算符](#运算符)
+    - [循环](#循环)
+    - [访问限定符和继承](#访问限定符和继承)
+    - [方法定义（函数定义）](#方法定义函数定义)
+      - [一个递归调用的例子](#一个递归调用的例子)
+      - [输入参数、输入输出参数、输出参数](#输入参数输入输出参数输出参数)
+    - [可空类型 `Nullable`](#可空类型-nullable)
+  - [数组](#数组)
+    - [常规数组](#常规数组)
+    - [数组作为函数参数](#数组作为函数参数)
+    - [参数数组（可变参数）](#参数数组可变参数)
+    - [`Array`基类](#array基类)
+  - [`String`类型](#string类型)
+    - [构造](#构造)
+    - [属性](#属性)
+    - [常用方法介绍](#常用方法介绍)
+  - [`Struct` 封装](#struct-封装)
+    - [简单使用](#简单使用)
+    - [`struct` vs `class`](#struct-vs-class)
+  - [枚举类型](#枚举类型)
+  - [类](#类)
+    - [基本介绍](#基本介绍)
+    - [构造和析构](#构造和析构)
+    - [静态成员](#静态成员)
+  - [继承和多态](#继承和多态)
+  - [运算符重载](#运算符重载)
+  - [接口 `Interface`](#接口-interface)
+  - [命名空间](#命名空间)
+  - [预处理](#预处理)
+  - [异常处理](#异常处理)
+  - [文件处理](#文件处理)
+
 ## 简单入门
 
 首先我用的目录结构:
@@ -1316,3 +1368,124 @@ public void Test2()
 ```
 
 和 `const` 字段一样用类名访问。
+
+## 继承和多态
+
+和C++基本一致，不赘述概念和规则了。
+
+这里放一个函数重写的例子吧。
+
+```cs
+public class BaseShape { public virtual void Print() { Console.WriteLine("Base Shape"); } }
+public class Circle : BaseShape { public override void Print() { Console.WriteLine("Circle"); } }
+public class Rect : BaseShape { public override void Print() { Console.WriteLine("Rect"); } }
+public void PrintShapeType(BaseShape bs) { bs.Print(); }
+public void Test3()
+{
+    BaseShape bs = new BaseShape();
+    Circle c = new Circle();
+    Rect r = new Rect();
+    // 这里就会调用不同的重写函数
+    PrintShapeType(bs);
+    PrintShapeType(c);
+    PrintShapeType(r);
+}
+```
+
+![](./assets/15.png)
+
+## 运算符重载
+
+概念和C++的是相同的，这里放一些例子。
+
+```cs
+public class Pair
+{
+    public int x;
+    public int y;
+    public Pair(int a, int b) { x = a; y = b; }
+    public static Pair operator+(Pair p1, Pair p2)
+    {
+        return new Pair(p2.x + p1.x, p2.y + p1.y);
+    }
+    // 重写 ToString 方法 才能支持 Console.WriteLine() 的输出
+    public override string ToString()
+    {
+        return $"Pair(x: {x}, y: {y})";
+    }
+}
+public void Test4()
+{
+    Pair p1 = new Pair(1, 2);
+    Pair p2 = new Pair(2, 3);
+    Console.WriteLine(p1);
+    Console.WriteLine(p1 + p2);
+}
+```
+
+![](./assets/16.png)
+
+> [!TIP]
+>
+> 想让自定义类型支持 `Console.WriteLine()` 输出，就要重载一个 `string ToString()` 方法。
+>
+> 这个和C++中的 `ostream& operator<<()` 是同一个道理。
+
+## 接口 `Interface`
+
+**参考：[https://www.runoob.com/csharp/csharp-interface.html](https://www.runoob.com/csharp/csharp-interface.html)**
+
+接口定义了所有类继承接口时应遵循的语法合同。接口定义了语法合同 **"是什么"** 部分，派生类定义了语法合同 **"怎么做"** 部分。
+
+接口定义了属性、方法和事件，这些都是接口的成员。接口只包含了成员的声明。成员的定义是派生类的责任。接口提供了派生类应遵循的标准结构。
+
+接口使得实现接口的类或结构在形式上保持一致。
+
+抽象类在某种程度上与接口类似，但是，它们大多只是用在当只有少数方法由基类声明由派生类实现时。
+
+接口本身并不实现任何功能，它只是和声明实现该接口的对象订立一个必须实现哪些行为的契约。
+
+抽象类不能直接实例化，但允许派生出具体的，具有实际功能的类。
+
+这个在这里不展开了，感觉用的比较少，具体可见：[https://www.runoob.com/csharp/csharp-interface.html](https://www.runoob.com/csharp/csharp-interface.html)
+
+## 命名空间
+
+思想和C++是相同的。不展开
+
+## 预处理
+
+基本和C/C++相同，与 C 和 C++ 不同的是，它们不是用来创建宏。一个预处理器指令必须是该行上的唯一指令。
+
+| 预处理指令   | 含义                                                         |
+| ------------ | ------------------------------------------------------------ |
+| `#define`    | 定义一个符号，可以用于条件编译。                             |
+| `#undef`     | 取消定义一个符号。                                           |
+| `#if`        | 开始一个条件编译块，如果符号被定义则包含代码块。             |
+| `#elif`      | 如果前面的 `#if` 或 `#elif` 条件不满足，且当前条件满足，则包含代码块。 |
+| `#else`      | 如果前面的 `#if` 或 `#elif` 条件不满足，则包含代码块。       |
+| `#endif`     | 结束一个条件编译块。                                         |
+| `#warning`   | 生成编译器警告信息。                                         |
+| `#error`     | 生成编译器错误信息。                                         |
+| `#region`    | 标记一段代码区域，可以在IDE中折叠和展开这段代码，便于代码的组织和阅读。 |
+| `#endregion` | 结束一个代码区域。                                           |
+| `#line`      | 更改编译器输出中的行号和文件名，可以用于调试或生成工具的代码。 |
+| `#pragma`    | 用于给编译器发送特殊指令，例如禁用或恢复特定的警告。         |
+| `#nullable`  | 控制可空性上下文和注释，允许启用或禁用对可空引用类型的编译器检查。 |
+
+**参考自：[https://www.runoob.com/csharp/csharp-preprocessor-directives.html](https://www.runoob.com/csharp/csharp-preprocessor-directives.html)**
+
+## 异常处理
+
+四个关键字。
+
+- `try`：一个 `try` 块标识了一个将被激活的特定的异常的代码块。后跟一个或多个 `catch` 块。
+- `catch`：程序通过异常处理程序捕获异常。`catch` 关键字表示异常的捕获。
+- `finally`：`finally` 块用于执行给定的语句，不管异常是否被抛出都会执行。例如，如果您打开一个文件，不管是否出现异常文件都要被关闭。
+- `throw`：当问题出现时，程序抛出一个异常。使用 `throw` 关键字来完成。
+
+异常处理机制和C++基本相同，C#中的异常类也是派生出来的，和C++思想是相同的
+
+## 文件处理
+
+略，这里不赘述了，使用的时候直接看文档即可。

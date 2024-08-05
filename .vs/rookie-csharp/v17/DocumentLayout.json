@@ -31,6 +31,7 @@
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABcAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-02T15:31:06.637Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
@@ -41,7 +42,7 @@
               "RelativeDocumentMoniker": "src\\Lesson4.cs",
               "ToolTip": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\Lesson4.cs",
               "RelativeToolTip": "src\\Lesson4.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABMAAAAWAAAA",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAADsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-05T07:07:08.679Z",
               "EditorCaption": ""

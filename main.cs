@@ -21,7 +21,7 @@ namespace rookie_csharp
         static void Main(string[] args)
         {
             Lesson4 t = new Lesson4();
-            t.Test2();
+            t.Test4();
         }
     }
 }
