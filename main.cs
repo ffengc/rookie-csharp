@@ -20,8 +20,8 @@ namespace rookie_csharp
     {
         static void Main(string[] args)
         {
-            Lesson4 t = new Lesson4();
-            t.Test4();
+            Lesson5 t = new Lesson5();
+            t.Test2();
         }
     }
 }

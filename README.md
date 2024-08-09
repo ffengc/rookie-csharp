@@ -1489,3 +1489,20 @@ public void Test4()
 ## 文件处理
 
 略，这里不赘述了，使用的时候直接看文档即可。
+
+## `System.Collections`容器
+
+**这一部分参考：[https://gitee.com/chutianshu1981/AwesomeUnityTutorial/](https://gitee.com/chutianshu1981/AwesomeUnityTutorial/)**
+
+其实就是 C# 版本的STL。
+
+`System.Collections` 包含非泛型容器类
+
+`System.Collections.Generic` 包含泛型容器类
+
+自 `.NET Framework 4` 起，`System.Collections.Concurrent` 命名空间中的集合可提供高效的线程安全操作，以便从多个线程访问集合项。 `System.Collections.Immutable` 命名空间（`NuGet` 包）中的不可变集合类本质上就是线程安全的，因为操作在原始集合的副本上进行且不能修改原始集合。
+
+很多容器和方法和C++是同样思想的，都是数据结构的封装，使用的区别有但不大。
+
+具体可以见代码 `src/Lesson5.cs`。
+
