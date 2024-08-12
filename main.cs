@@ -20,8 +20,7 @@ namespace rookie_csharp
     {
         static void Main(string[] args)
         {
-            Lesson5 t = new Lesson5();
-            t.Test2();
+            PerformanceTest.RunPerformanceTests(100);
         }
     }
 }

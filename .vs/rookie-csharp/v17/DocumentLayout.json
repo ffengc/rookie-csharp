@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\demac\\Desktop\\rookie-csharp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|c:\\users\\demac\\desktop\\rookie-csharp\\src\\lesson5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|solutionrelative:src\\lesson5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\SortMethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\SortMethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{699C2EF6-C0D4-400D-88E4-D56BB71B68E3}|rookie-csharp.csproj|c:\\users\\demac\\desktop\\rookie-csharp\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -28,22 +28,23 @@
               "RelativeDocumentMoniker": "Main.cs",
               "ToolTip": "C:\\Users\\demac\\Desktop\\rookie-csharp\\Main.cs",
               "RelativeToolTip": "Main.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABcAAAATAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABYAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-02T15:31:06.637Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Lesson5.cs",
-              "DocumentMoniker": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\Lesson5.cs",
-              "RelativeDocumentMoniker": "src\\Lesson5.cs",
-              "ToolTip": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\Lesson5.cs",
-              "RelativeToolTip": "src\\Lesson5.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAALoAAAATAAAA",
+              "Title": "SortMethods.cs",
+              "DocumentMoniker": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\SortMethods.cs",
+              "RelativeDocumentMoniker": "src\\SortMethods.cs",
+              "ToolTip": "C:\\Users\\demac\\Desktop\\rookie-csharp\\src\\SortMethods.cs",
+              "RelativeToolTip": "src\\SortMethods.cs",
+              "ViewState": "AQIAADMBAAAAAAAAAAAAAEQBAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T14:45:01.523Z",
+              "WhenOpened": "2024-08-12T08:31:32.138Z",
               "EditorCaption": ""
             }
           ]
